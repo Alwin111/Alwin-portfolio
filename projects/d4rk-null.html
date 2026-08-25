@@ -34,9 +34,9 @@
 
     <div class="project-meta">
       <span class="badge-sm">🏆 Competition</span>
-      <span class="meta-text">Caterpillar Tech Challenge 2026 | Round 2</span>
+      <span class="meta-text">Caterpillar Tech Challenge 2026 | Problem Statement 2</span>
       <span class="meta-text">·</span>
-      <span class="meta-text">2nd Runner-Up</span>
+      <span class="meta-text">2nd Runner-Up — Problem Statement 2</span>
     </div>
 
     <h1 style="font-size:clamp(1.8rem,4vw,2.6rem);font-weight:700;color:var(--text-bright);margin-top:.8rem;letter-spacing:-.5px;line-height:1.15">
@@ -108,6 +108,11 @@
     <span class="pipeline-step">Adaptive PI Controller</span>
     <span class="pipeline-arrow">→</span>
     <span class="pipeline-step">System Response</span>
+  </div>
+
+  <div style="background:var(--surface);border:1px solid var(--border);border-radius:8px;overflow:hidden;margin:1.5rem 0">
+    <img src="../img/d4rk-null/slide4.png" alt="System Architecture" style="width:100%;display:block">
+    <div style="padding:.5rem .8rem;font-size:.65rem;color:var(--text-muted);font-family:var(--mono)">Complete System Architecture — Simulation to Adaptive Control</div>
   </div>
 
   <p>The ML model does not directly replace the PI controller. Instead, it provides controlled gain adjustments while the safety layer constrains the ML output. This architecture ensures the system degrades gracefully — if the ML model fails or produces unexpected outputs, the base PI controller continues to operate with its original gains.</p>
@@ -231,6 +236,73 @@
   </div>
 </div>
 
+<div class="project-divider"><hr></div>
+
+<!-- RESULTS -->
+<div class="project-section">
+  <h2>Results</h2>
+
+  <h3>Performance Comparison — Fixed PI vs Adaptive PI</h3>
+  <div style="overflow-x:auto;margin:1rem 0">
+    <table style="width:100%;border-collapse:collapse;font-size:.82rem">
+      <thead>
+        <tr style="border-bottom:1px solid var(--border)">
+          <th style="text-align:left;padding:.6rem;color:var(--text-bright);font-weight:500">Metric</th>
+          <th style="text-align:left;padding:.6rem;color:var(--text-bright);font-weight:500">Fixed PI</th>
+          <th style="text-align:left;padding:.6rem;color:var(--text-bright);font-weight:500">Adaptive PI</th>
+          <th style="text-align:left;padding:.6rem;color:var(--accent);font-weight:500">Improvement</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr style="border-bottom:1px solid var(--border)"><td style="padding:.5rem;color:var(--text)">Overshoot</td><td style="padding:.5rem;color:var(--text)">0.0181%</td><td style="padding:.5rem;color:var(--text)">0.0178%</td><td style="padding:.5rem;color:var(--accent)">Maintained</td></tr>
+        <tr style="border-bottom:1px solid var(--border)"><td style="padding:.5rem;color:var(--text)">Settling Time</td><td style="padding:.5rem;color:var(--text)">9907.4s</td><td style="padding:.5rem;color:var(--text)">6209.7s</td><td style="padding:.5rem;color:var(--accent)">37.3% Faster</td></tr>
+        <tr style="border-bottom:1px solid var(--border)"><td style="padding:.5rem;color:var(--text)">SSE</td><td style="padding:.5rem;color:var(--text)">24.77</td><td style="padding:.5rem;color:var(--text)">0.4</td><td style="padding:.5rem;color:var(--accent)">98.4% Lower</td></tr>
+        <tr style="border-bottom:1px solid var(--border)"><td style="padding:.5rem;color:var(--text)">IAE</td><td style="padding:.5rem;color:var(--text)">1.96×10⁶</td><td style="padding:.5rem;color:var(--text)">9.71×10⁵</td><td style="padding:.5rem;color:var(--accent)">50.5% Lower</td></tr>
+        <tr><td style="padding:.5rem;color:var(--text)">ISE</td><td style="padding:.5rem;color:var(--text)">7.43×10⁸</td><td style="padding:.5rem;color:var(--text)">3.67×10⁸</td><td style="padding:.5rem;color:var(--accent)">50.7% Lower</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <h3>Key Observations</h3>
+  <ul>
+    <li><strong style="color:var(--text-bright)">98.4% reduction</strong> in steady-state error (SSE) under repeated disturbance injections</li>
+    <li><strong style="color:var(--text-bright)">37.3% faster settling</strong> than fixed PI while maintaining negligible overshoot (&lt;0.02%)</li>
+    <li><strong style="color:var(--text-bright)">~50% lower IAE and ISE</strong>, indicating significantly better tracking performance</li>
+    <li><strong style="color:var(--text-bright)">No controller retuning required</strong> — adaptive gain tuning improved disturbance rejection automatically</li>
+  </ul>
+
+  <h3>Results Visualization</h3>
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:.8rem;margin:1rem 0">
+    <div style="background:var(--surface);border:1px solid var(--border);border-radius:8px;overflow:hidden">
+      <img src="../img/d4rk-null/page8_img0.png" alt="Step Response Comparison" style="width:100%;display:block">
+      <div style="padding:.5rem .8rem;font-size:.65rem;color:var(--text-muted);font-family:var(--mono)">Step Response — Fixed vs Adaptive PI</div>
+    </div>
+    <div style="background:var(--surface);border:1px solid var(--border);border-radius:8px;overflow:hidden">
+      <img src="../img/d4rk-null/page9_img0.png" alt="Gain Adaptation" style="width:100%;display:block">
+      <div style="padding:.5rem .8rem;font-size:.65rem;color:var(--text-muted);font-family:var(--mono)">Gain Adaptation Over Time</div>
+    </div>
+  </div>
+
+  <h3>Robustness Across Operating Conditions</h3>
+  <p>The adaptive controller was tested across three different plant conditions (A = 20,000 / 35,000 / 50,000) with consistent results:</p>
+  <ul>
+    <li><strong style="color:var(--text-bright)">More than 97% SSE reduction</strong> in every test case</li>
+    <li><strong style="color:var(--text-bright)">Settling time improved by 27–37%</strong> across all conditions</li>
+    <li><strong style="color:var(--text-bright)">Strong generalization</strong> — no retuning needed for different operating points</li>
+  </ul>
+
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:.8rem;margin:1rem 0">
+    <div style="background:var(--surface);border:1px solid var(--border);border-radius:8px;overflow:hidden">
+      <img src="../img/d4rk-null/page12_img0.png" alt="Long-term Stability" style="width:100%;display:block">
+      <div style="padding:.5rem .8rem;font-size:.65rem;color:var(--text-muted);font-family:var(--mono)">Long-Term Stability — Kp & Ki Adaptation</div>
+    </div>
+    <div style="background:var(--surface);border:1px solid var(--border);border-radius:8px;overflow:hidden">
+      <img src="../img/d4rk-null/page12_img1.png" alt="Performance Comparison" style="width:100%;display:block">
+      <div style="padding:.5rem .8rem;font-size:.65rem;color:var(--text-muted);font-family:var(--mono)">20,000s Stability Test Results</div>
+    </div>
+  </div>
+</div>
+
 <!-- BACK TO PROJECTS -->
 <div class="project-section" style="text-align:center;padding-bottom:4rem">
   <a href="../projects.html" class="btn btn-ghost">← Back to Projects</a>
@@ -239,8 +311,8 @@
 <!-- FOOTER -->
 <footer>
   <div class="footer-links">
-    <a href="https://github.com/AlwinVarghese" target="_blank" rel="noopener">GitHub</a>
-    <a href="https://linkedin.com/in/alwin-varghese" target="_blank" rel="noopener">LinkedIn</a>
+    <a href="https://github.com/Alwin111" target="_blank" rel="noopener">GitHub</a>
+    <a href="https://linkedin.com/in/alwin-varghese-58a45a330" target="_blank" rel="noopener">LinkedIn</a>
     <a href="../contact.html">Contact</a>
   </div>
   <p>© 2026 Alwin Varghese</p>
