@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Vanguard — Alwin Varghese</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="navbar">
+  <a href="../index.html" class="logo">Alwin Varghese</a>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="../index.html">Home</a></li>
+    <li><a href="../projects.html" class="active">Projects</a></li>
+    <li><a href="../achievements.html">Achievements</a></li>
+    <li><a href="../about.html">About</a></li>
+    <li><a href="../contact.html">Contact</a></li>
+  </ul>
+  <button class="nav-toggle" id="navToggle" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- PROJECT HERO -->
+<div class="project-hero">
+  <div class="project-hero-inner">
+    <div class="breadcrumb" style="font-size:.7rem;font-family:var(--mono);color:var(--text-muted);letter-spacing:1px;text-transform:uppercase;margin-bottom:.5rem">
+      <a href="../projects.html" style="color:var(--text-muted)">Projects</a> / Vanguard
+    </div>
+
+    <div class="project-meta">
+      <span class="badge-sm">★ Flagship</span>
+      <span class="meta-text">bi0s Hardware</span>
+      <span class="meta-text">·</span>
+      <span class="meta-text">Embedded Security</span>
+    </div>
+
+    <h1 style="font-size:clamp(1.8rem,4vw,2.6rem);font-weight:700;color:var(--text-bright);margin-top:.8rem;letter-spacing:-.5px;line-height:1.15">
+      Vanguard — Portable Hardware Security Laboratory
+    </h1>
+
+    <p style="font-size:1rem;color:var(--text);margin-top:.8rem;max-width:600px;line-height:1.7">
+      A handheld, battery-powered hardware security platform built for the bi0s Hardware team. Equal parts badge, field radio, games console, and live CTF target.
+    </p>
+
+    <!-- Full hero image — both PCBs side by side -->
+    <div class="project-hero-img" style="display:grid;grid-template-columns:1fr 1fr;margin-top:1.5rem">
+      <div style="position:relative;overflow:hidden;border-right:1px solid var(--border)">
+        <img src="../img/vanguard_pcb_front.webp" alt="Vanguard PCB Front" style="height:100%;object-fit:cover">
+        <span style="position:absolute;bottom:8px;right:8px;font-size:.55rem;font-family:var(--mono);color:rgba(255,255,255,.5);letter-spacing:1px;background:rgba(0,0,0,.5);padding:2px 8px;border-radius:3px">PCB FRONT</span>
+      </div>
+      <div style="position:relative;overflow:hidden">
+        <img src="../img/vanguard_pcb_back.webp" alt="Vanguard PCB Back" style="height:100%;object-fit:cover">
+        <span style="position:absolute;bottom:8px;right:8px;font-size:.55rem;font-family:var(--mono);color:rgba(255,255,255,.5);letter-spacing:1px;background:rgba(0,0,0,.5);padding:2px 8px;border-radius:3px">PCB BACK</span>
+      </div>
+    </div>
+
+    <!-- Tech tags -->
+    <div style="display:flex;flex-wrap:wrap;gap:.4rem;margin-top:1rem">
+      <span class="tag tag-accent">ESP32-S3</span>
+      <span class="tag tag-accent">LoRa</span>
+      <span class="tag tag-accent">BLE</span>
+      <span class="tag tag-accent">ESP-IDF</span>
+      <span class="tag tag-accent">KiCad</span>
+      <span class="tag tag-accent">MIT License</span>
+    </div>
+
+    <!-- Links -->
+    <div style="display:flex;gap:.8rem;margin-top:1.5rem">
+      <a href="https://github.com/AlwinVarghese/vanguard" target="_blank" rel="noopener" class="btn btn-ghost btn-sm">GitHub →</a>
+    </div>
+  </div>
+</div>
+
+<div class="project-divider"><hr></div>
+
+<!-- OVERVIEW -->
+<div class="project-section">
+  <h2>Overview</h2>
+  <p>Vanguard is a <strong style="color:var(--text-bright)">handheld, battery-powered hardware security platform</strong> designed for the bi0s Hardware team — India's premier hardware security student group. It combines a badge, field radio, games console, and live CTF target into a single portable device.</p>
+  <p>The core idea: build a device that a participant can <strong style="color:var(--text-bright)">play with and hack on the same hardware</strong>. The CTF system runs directly on the badge, creating a self-contained security challenge environment that doesn't require external infrastructure.</p>
+  <p>Vanguard is built around the <strong style="color:var(--text-bright)">ESP32-S3</strong> microcontroller, chosen for its dual-core architecture, integrated Wi-Fi and Bluetooth, and extensive peripheral support. The device communicates via <strong style="color:var(--text-bright)">LoRa</strong> for long-range mesh networking and <strong style="color:var(--text-bright)">BLE</strong> for short-range interactions.</p>
+</div>
+
+<div class="project-divider"><hr></div>
+
+<!-- HOW IT WORKS -->
+<div class="project-section">
+  <h2>How It Works</h2>
+  <p>The system architecture follows a modular firmware design where each subsystem operates independently but communicates through a shared event bus:</p>
+
+  <div class="feature-grid">
+    <div class="feature-item">
+      <h4>⚡ 4-Level CTF System</h4>
+      <p>Progressive difficulty challenge framework with real-time scoring. Each level introduces new attack vectors — from basic reconnaissance to full protocol exploitation.</p>
+    </div>
+    <div class="feature-item">
+      <h4>📡 LoRa Mesh Network</h4>
+      <p>Long-range device-to-device communication for field operations. Multiple Vanguard units can form an ad-hoc mesh network without external infrastructure.</p>
+    </div>
+    <div class="feature-item">
+      <h4>🔋 Battery Powered</h4>
+      <p>All-day portable operation with an integrated power management system. Smart sleep modes and peripheral power gating maximize field uptime.</p>
+    </div>
+    <div class="feature-item">
+      <h4>🎮 Interactive Display</h4>
+      <p>OLED UI with menus, games, and real-time status monitoring. Provides the primary interface for both normal use and CTF challenges.</p>
+    </div>
+  </div>
+
+  <h3>CTF Challenge Flow</h3>
+  <div class="pipeline">
+    <span class="pipeline-step">Device Boot</span>
+    <span class="pipeline-arrow">→</span>
+    <span class="pipeline-step">Level Select</span>
+    <span class="pipeline-arrow">→</span>
+    <span class="pipeline-step">Recon Phase</span>
+    <span class="pipeline-arrow">→</span>
+    <span class="pipeline-step">Vulnerability Discovery</span>
+    <span class="pipeline-arrow">→</span>
+    <span class="pipeline-step">Exploitation</span>
+    <span class="pipeline-arrow">→</span>
+    <span class="pipeline-step">Score Submission</span>
+  </div>
+</div>
+
+<div class="project-divider"><hr></div>
+
+<!-- IMPLEMENTATION -->
+<div class="project-section">
+  <h2>Implementation</h2>
+
+  <h3>Hardware Design</h3>
+  <p>The PCB was designed in KiCad with a 4-layer stackup to accommodate the ESP32-S3 module, LoRa transceiver, BLE antenna, OLED display connector, battery management IC, and expansion headers for future modules.</p>
+  <p>Key hardware decisions:</p>
+  <ul>
+    <li><strong style="color:var(--text-bright)">ESP32-S3</strong> — Dual-core 240MHz with integrated Wi-Fi/BLE, sufficient GPIO for peripherals, and hardware crypto acceleration</li>
+    <li><strong style="color:var(--text-bright)">LoRa transceiver</strong> — Long-range RF communication for mesh networking in outdoor CTF scenarios</li>
+    <li><strong style="color:var(--text-bright)">OLED display</strong> — Low-power visual interface for menus, status, and game rendering</li>
+    <li><strong style="color:var(--text-bright)">Battery management</strong> — Integrated charging, protection, and voltage regulation for all-day portable use</li>
+  </ul>
+
+  <h3>Firmware Architecture</h3>
+  <p>Written in C using the ESP-IDF framework with a task-based architecture on FreeRTOS. Each subsystem (display, radio, CTF engine, power management) runs as an independent task with message queues for inter-task communication.</p>
+
+  <h3>Software Stack</h3>
+  <div class="tech-stack">
+    <div class="tech-item"><span class="tech-name">ESP-IDF</span><span class="tech-desc">Firmware framework</span></div>
+    <div class="tech-item"><span class="tech-name">FreeRTOS</span><span class="tech-desc">Task scheduling</span></div>
+    <div class="tech-item"><span class="tech-name">C</span><span class="tech-desc">Core firmware</span></div>
+    <div class="tech-item"><span class="tech-name">KiCad</span><span class="tech-desc">PCB design</span></div>
+    <div class="tech-item"><span class="tech-name">BLE</span><span class="tech-desc">Short-range comms</span></div>
+    <div class="tech-item"><span class="tech-name">LoRa</span><span class="tech-desc">Long-range mesh</span></div>
+  </div>
+</div>
+
+<div class="project-divider"><hr></div>
+
+<!-- RESULTS -->
+<div class="project-section">
+  <h2>Results</h2>
+  <ul>
+    <li><strong style="color:var(--text-bright)">Fully functional prototype</strong> with working CTF system, mesh networking, and battery operation</li>
+    <li><strong style="color:var(--text-bright)">Deployed at bi0s Hardware events</strong> as a hands-on security training platform</li>
+    <li><strong style="color:var(--text-bright)">Modular design</strong> allows easy addition of new CTF challenges and peripheral modules</li>
+    <li><strong style="color:var(--text-bright)">Self-contained operation</strong> — no external infrastructure required for CTF deployment</li>
+    <li><strong style="color:var(--text-bright)">Open source under MIT License</strong> — available for other hardware security teams to build and modify</li>
+  </ul>
+</div>
+
+<!-- BACK TO PROJECTS -->
+<div class="project-section" style="text-align:center;padding-bottom:4rem">
+  <a href="../projects.html" class="btn btn-ghost">← Back to Projects</a>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-links">
+    <a href="https://github.com/AlwinVarghese" target="_blank" rel="noopener">GitHub</a>
+    <a href="https://linkedin.com/in/alwin-varghese" target="_blank" rel="noopener">LinkedIn</a>
+    <a href="../contact.html">Contact</a>
+  </div>
+  <p>© 2026 Alwin Varghese</p>
+</footer>
+
+<script>
+const nav = document.getElementById('navbar');
+window.addEventListener('scroll', () => nav.classList.toggle('scrolled', window.scrollY > 10));
+document.getElementById('navToggle').addEventListener('click', () => document.getElementById('navLinks').classList.toggle('open'));
+</script>
+</body>
+</html>

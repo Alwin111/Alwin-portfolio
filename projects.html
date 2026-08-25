@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Projects — Alwin Varghese</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="navbar">
+  <a href="index.html" class="logo">Alwin Varghese</a>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="projects.html" class="active">Projects</a></li>
+    <li><a href="achievements.html">Achievements</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
+  <button class="nav-toggle" id="navToggle" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- HEADER -->
+<div class="page-header">
+  <div class="breadcrumb"><a href="index.html">Home</a> / Projects</div>
+  <h1>What I've Built</h1>
+  <p class="subtitle">Hardware security platforms, embedded systems, wireless research tools, and machine learning projects.</p>
+</div>
+
+<!-- PROJECTS -->
+<section class="section" style="padding-top:0">
+  <div class="container">
+    <div class="project-grid">
+
+      <!-- Vanguard — Featured -->
+      <a href="projects/vanguard.html" class="featured-card" style="text-decoration:none;color:inherit">
+        <div class="featured-img">
+          <img src="img/vanguard_pcb_front.webp" alt="Vanguard PCB front">
+        </div>
+        <div class="featured-body">
+          <span class="badge">★ Flagship</span>
+          <h3>Vanguard — Portable Hardware Security Lab</h3>
+          <p>A handheld, battery-powered security platform built for the bi0s Hardware team. Equal parts badge, field radio, games console, and live CTF target — designed to be handed to a participant who can play with it and hack it on the same device.</p>
+          <div class="featured-tech">ESP32-S3 · LoRa · BLE · ESP-IDF · KiCad</div>
+        </div>
+      </a>
+
+      <!-- D4RK NULL -->
+      <a href="projects/d4rk-null.html" class="card project-card" style="text-decoration:none;color:inherit">
+        <div class="card-body">
+          <h3>D4RK NULL — ML-Based Adaptive PI Controller</h3>
+          <p>LSTM-based adaptive controller that monitors error and disturbance history to generate real-time gain corrections for self-adjusting PI control. 2nd Runner-Up at Caterpillar Tech Challenge 2026.</p>
+          <div class="card-footer">
+            <span class="card-tech">Python · TensorFlow · Simulink</span>
+            <span class="card-link">View Project →</span>
+          </div>
+        </div>
+      </a>
+
+      <!-- PeerDrop -->
+      <a href="projects.html" class="card project-card" style="text-decoration:none;color:inherit">
+        <img class="card-img" src="img/peerdrop.webp" alt="PeerDrop">
+        <div class="card-body">
+          <h3>PeerDrop</h3>
+          <p>BLE peer-to-peer secure data exchange on ESP32 with RSSI-based proximity verification. Zero cloud, zero persistent identifiers.</p>
+          <div class="card-footer">
+            <span class="card-tech">ESP32 · BLE · C++ · RSSI</span>
+            <span class="card-link">GitHub →</span>
+          </div>
+        </div>
+      </a>
+
+      <!-- SmartPocket -->
+      <a href="projects.html" class="card project-card" style="text-decoration:none;color:inherit">
+        <img class="card-img" src="img/smartpocket.webp" alt="SmartPocket Tutor">
+        <div class="card-body">
+          <h3>SmartPocket Tutor</h3>
+          <p>Voice AI assistant on ESP32 with OLED display and speaker for on-device interaction and learning.</p>
+          <div class="card-footer">
+            <span class="card-tech">ESP32 · Voice AI · OLED</span>
+            <span class="card-link">GitHub →</span>
+          </div>
+        </div>
+      </a>
+
+      <!-- Meta-Learning -->
+      <a href="projects.html" class="card project-card" style="text-decoration:none;color:inherit">
+        <div class="card-body">
+          <h3>Meta-Learning Optimization Framework</h3>
+          <p>Automatically selects the optimal optimization strategy for deploying pre-trained ML models on constrained edge hardware.</p>
+          <div class="card-footer">
+            <span class="card-tech">Python · TensorFlow · ONNX</span>
+            <span class="card-link">GitHub →</span>
+          </div>
+        </div>
+      </a>
+
+      <!-- Audio Encryption -->
+      <a href="projects.html" class="card project-card" style="text-decoration:none;color:inherit">
+        <div class="card-body">
+          <h3>Audio Encryption Device</h3>
+          <p>Real-time hardware voice encryption. Plug-and-play device for secure voice communication.</p>
+          <div class="card-footer">
+            <span class="card-tech">Embedded C · Hardware · Encryption</span>
+            <span class="card-link">GitHub →</span>
+          </div>
+        </div>
+      </a>
+
+      <!-- BLE Tracking -->
+      <a href="projects.html" class="card project-card" style="text-decoration:none;color:inherit">
+        <div class="card-body">
+          <h3>BLE Asset Tracking System</h3>
+          <p>Hospital-grade asset tracking using ESP32 BLE beacons and Raspberry Pi server. RSSI-based triangulation with a live monitoring dashboard. Scalable mesh — add more nodes to cover larger floor plans.</p>
+          <div class="card-footer">
+            <span class="card-tech">ESP32 · BLE · Raspberry Pi · MQTT</span>
+            <span class="card-link">GitHub →</span>
+          </div>
+        </div>
+      </a>
+
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-links">
+    <a href="https://github.com/AlwinVarghese" target="_blank" rel="noopener">GitHub</a>
+    <a href="https://linkedin.com/in/alwin-varghese" target="_blank" rel="noopener">LinkedIn</a>
+    <a href="contact.html">Contact</a>
+  </div>
+  <p>© 2026 Alwin Varghese</p>
+</footer>
+
+<script>
+const nav = document.getElementById('navbar');
+window.addEventListener('scroll', () => nav.classList.toggle('scrolled', window.scrollY > 10));
+document.getElementById('navToggle').addEventListener('click', () => document.getElementById('navLinks').classList.toggle('open'));
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+}, { threshold: 0.1 });
+document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>

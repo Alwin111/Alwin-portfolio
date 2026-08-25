@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>D4RK NULL — Alwin Varghese</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../css/style.css">
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="navbar">
+  <a href="../index.html" class="logo">Alwin Varghese</a>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="../index.html">Home</a></li>
+    <li><a href="../projects.html" class="active">Projects</a></li>
+    <li><a href="../achievements.html">Achievements</a></li>
+    <li><a href="../about.html">About</a></li>
+    <li><a href="../contact.html">Contact</a></li>
+  </ul>
+  <button class="nav-toggle" id="navToggle" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- PROJECT HERO -->
+<div class="project-hero">
+  <div class="project-hero-inner">
+    <div class="breadcrumb" style="font-size:.7rem;font-family:var(--mono);color:var(--text-muted);letter-spacing:1px;text-transform:uppercase;margin-bottom:.5rem">
+      <a href="../projects.html" style="color:var(--text-muted)">Projects</a> / D4RK NULL
+    </div>
+
+    <div class="project-meta">
+      <span class="badge-sm">🏆 Competition</span>
+      <span class="meta-text">Caterpillar Tech Challenge 2026 | Round 2</span>
+      <span class="meta-text">·</span>
+      <span class="meta-text">2nd Runner-Up</span>
+    </div>
+
+    <h1 style="font-size:clamp(1.8rem,4vw,2.6rem);font-weight:700;color:var(--text-bright);margin-top:.8rem;letter-spacing:-.5px;line-height:1.15">
+      D4RK NULL — ML-Based Adaptive PI Controller
+    </h1>
+
+    <p style="font-size:1rem;color:var(--text);margin-top:.8rem;max-width:600px;line-height:1.7">
+      An LSTM neural network that monitors controller behavior in real time and dynamically adjusts PI gain parameters to maintain optimal performance under changing conditions.
+    </p>
+
+    <div style="display:flex;flex-wrap:wrap;gap:.4rem;margin-top:1rem">
+      <span class="tag tag-accent">Python</span>
+      <span class="tag tag-accent">TensorFlow / Keras</span>
+      <span class="tag tag-accent">MATLAB Simulink</span>
+      <span class="tag tag-accent">NumPy</span>
+      <span class="tag tag-accent">Pandas</span>
+      <span class="tag tag-accent">Matplotlib</span>
+    </div>
+  </div>
+</div>
+
+<div class="project-divider"><hr></div>
+
+<!-- OVERVIEW -->
+<div class="project-section">
+  <h2>Overview</h2>
+  <p>Traditional PI controllers use fixed gains (<strong style="color:var(--text-bright)">Kp, Ki</strong>) tuned for a particular operating condition. When disturbances occur — such as load changes or noise — the controller's performance can degrade, resulting in increased overshoot, slower settling, and reduced stability.</p>
+
+  <p>Our solution uses an <strong style="color:var(--text-bright)">LSTM-based adaptive controller</strong> that monitors error and disturbance history over time and generates correction factors for Kp and Ki in real time.</p>
+
+  <p>The underlying PI controller remains intact; the ML layer makes its gains <strong style="color:var(--text-bright)">self-adjusting to changing conditions</strong>.</p>
+
+  <div class="equation">
+    <div style="margin-bottom:.5rem;font-size:.7rem;color:var(--text-muted);letter-spacing:2px;text-transform:uppercase">Core Concept</div>
+    Error + Disturbance History → <strong>LSTM</strong> → Kp Correction + Ki Correction
+  </div>
+
+  <h3>Gain Equations</h3>
+  <div class="equation">
+    Kp<sub>final</sub> = Kp<sub>base</sub> × Kp<sub>corr</sub><br>
+    Ki<sub>final</sub> = Ki<sub>base</sub> × Ki<sub>corr</sub>
+  </div>
+
+  <p>The LSTM learns the relationship between the controller's observed behavior and the gain adjustments required to improve the response. It does not replace the PI controller — it enhances it.</p>
+</div>
+
+<div class="project-divider"><hr></div>
+
+<!-- TECHNICAL ARCHITECTURE -->
+<div class="project-section">
+  <h2>Technical Architecture</h2>
+  <p>The complete pipeline from simulation to adaptive control:</p>
+
+  <div class="pipeline">
+    <span class="pipeline-step">Simulink Plant Simulation</span>
+    <span class="pipeline-arrow">→</span>
+    <span class="pipeline-step">Dataset Generation</span>
+    <span class="pipeline-arrow">→</span>
+    <span class="pipeline-step">Data Preprocessing</span>
+    <span class="pipeline-arrow">→</span>
+    <span class="pipeline-step">Time-Series Windowing</span>
+    <span class="pipeline-arrow">→</span>
+    <span class="pipeline-step">LSTM Model</span>
+    <span class="pipeline-arrow">→</span>
+    <span class="pipeline-step">Gain Correction</span>
+    <span class="pipeline-arrow">→</span>
+    <span class="pipeline-step">Safety Layer</span>
+    <span class="pipeline-arrow">→</span>
+    <span class="pipeline-step">Adaptive PI Controller</span>
+    <span class="pipeline-arrow">→</span>
+    <span class="pipeline-step">System Response</span>
+  </div>
+
+  <p>The ML model does not directly replace the PI controller. Instead, it provides controlled gain adjustments while the safety layer constrains the ML output. This architecture ensures the system degrades gracefully — if the ML model fails or produces unexpected outputs, the base PI controller continues to operate with its original gains.</p>
+
+  <div class="feature-grid">
+    <div class="feature-item">
+      <h4>📊 Simulink Plant Simulation</h4>
+      <p>MATLAB Simulink model generates realistic plant behavior data under various operating conditions and disturbance scenarios.</p>
+    </div>
+    <div class="feature-item">
+      <h4>🧠 LSTM Neural Network</h4>
+      <p>Time-series model that processes error and disturbance history to predict optimal gain corrections for the current operating state.</p>
+    </div>
+    <div class="feature-item">
+      <h4>🔒 Safety Layer</h4>
+      <p>Constrains ML outputs to safe operating bounds, preventing abnormal corrections from destabilizing the control system.</p>
+    </div>
+    <div class="feature-item">
+      <h4>⚙️ Adaptive PI Controller</h4>
+      <p>Standard PI controller with dynamically adjusted gains, maintaining the reliability of conventional control.</p>
+    </div>
+  </div>
+</div>
+
+<div class="project-divider"><hr></div>
+
+<!-- SAFETY LAYER -->
+<div class="project-section">
+  <h2>Safety Layer</h2>
+  <p>The safety architecture is a critical engineering feature that ensures the adaptive system remains stable even under unexpected conditions.</p>
+
+  <div class="feature-grid">
+    <div class="feature-item">
+      <h4>🔒 Gain Clamping</h4>
+      <p>Hard limits on maximum and minimum gain values prevent the ML model from pushing gains beyond safe operating ranges.</p>
+    </div>
+    <div class="feature-item">
+      <h4>📐 Safe Operating Bounds</h4>
+      <p>Predefined constraints based on system identification ensure corrections stay within the controller's stable region.</p>
+    </div>
+    <div class="feature-item">
+      <h4>🔄 Fallback Logic</h4>
+      <p>If the ML model's confidence drops below threshold, the system automatically reverts to base PI gains.</p>
+    </div>
+    <div class="feature-item">
+      <h4>🛡️ Anomaly Detection</h4>
+      <p>Monitors ML output distribution to detect abnormal corrections before they reach the controller.</p>
+    </div>
+    <div class="feature-item">
+      <h4>⚡ Base PI Fallback</h4>
+      <p>The conventional PI controller remains fully operational underneath the adaptive layer — the ML enhances, never replaces.</p>
+    </div>
+  </div>
+</div>
+
+<div class="project-divider"><hr></div>
+
+<!-- REPOSITORY STRUCTURE -->
+<div class="project-section">
+  <h2>Repository Structure</h2>
+
+  <div class="code-block">
+<span class="dir">d4rk-null-caterpillar/</span>
+├── <span class="dir">data/</span>             <span class="comment"># Simulink-generated datasets (.mat files)</span>
+├── <span class="dir">preprocessing/</span>    <span class="comment"># Data cleaning, normalization, windowing</span>
+├── <span class="dir">model/</span>            <span class="comment"># LSTM architecture, training, saved model</span>
+├── <span class="dir">integration/</span>      <span class="comment"># Safety layer, gain clamping, fallback logic</span>
+└── <span class="dir">results/</span>          <span class="comment"># Comparison graphs, metrics</span>
+  </div>
+
+  <ul>
+    <li><strong style="color:var(--text-bright)">data/</strong> — Raw and processed Simulink datasets in .mat format, covering multiple operating conditions and disturbance profiles</li>
+    <li><strong style="color:var(--text-bright)">preprocessing/</strong> — Data cleaning pipelines, normalization functions, and time-series windowing for LSTM input preparation</li>
+    <li><strong style="color:var(--text-bright)">model/</strong> — LSTM architecture definition, training scripts, hyperparameter configurations, and saved model checkpoints</li>
+    <li><strong style="color:var(--text-bright)">integration/</strong> — Safety layer implementation, gain clamping logic, fallback mechanisms, and the adaptive PI controller wrapper</li>
+    <li><strong style="color:var(--text-bright)">results/</strong> — Comparison graphs between baseline PI and adaptive PI, performance metrics, and evaluation outputs</li>
+  </ul>
+</div>
+
+<div class="project-divider"><hr></div>
+
+<!-- TEAM -->
+<div class="project-section">
+  <h2>Team</h2>
+  <div class="team-grid">
+    <div class="team-card">
+      <div class="team-avatar">G</div>
+      <div class="team-name">Gautham</div>
+      <div class="team-role">Simulink model + dataset generation</div>
+    </div>
+    <div class="team-card">
+      <div class="team-avatar">G</div>
+      <div class="team-name">Gunisha</div>
+      <div class="team-role">LSTM model + training pipeline</div>
+    </div>
+    <div class="team-card">
+      <div class="team-avatar">A</div>
+      <div class="team-name">Abishek</div>
+      <div class="team-role">Target labels + evaluation metrics</div>
+    </div>
+    <div class="team-card">
+      <div class="team-avatar">A</div>
+      <div class="team-name">Alwin</div>
+      <div class="team-role">Safety layer + system integration</div>
+    </div>
+  </div>
+</div>
+
+<div class="project-divider"><hr></div>
+
+<!-- TECHNOLOGY STACK -->
+<div class="project-section">
+  <h2>Technology Stack</h2>
+  <div class="tech-stack">
+    <div class="tech-item"><span class="tech-name">MATLAB Simulink</span><span class="tech-desc">Plant simulation</span></div>
+    <div class="tech-item"><span class="tech-name">Python</span><span class="tech-desc">ML pipeline</span></div>
+    <div class="tech-item"><span class="tech-name">TensorFlow / Keras</span><span class="tech-desc">LSTM model</span></div>
+    <div class="tech-item"><span class="tech-name">NumPy</span><span class="tech-desc">Numerical processing</span></div>
+    <div class="tech-item"><span class="tech-name">Pandas</span><span class="tech-desc">Data processing</span></div>
+    <div class="tech-item"><span class="tech-name">Matplotlib</span><span class="tech-desc">Results visualization</span></div>
+  </div>
+</div>
+
+<!-- BACK TO PROJECTS -->
+<div class="project-section" style="text-align:center;padding-bottom:4rem">
+  <a href="../projects.html" class="btn btn-ghost">← Back to Projects</a>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-links">
+    <a href="https://github.com/AlwinVarghese" target="_blank" rel="noopener">GitHub</a>
+    <a href="https://linkedin.com/in/alwin-varghese" target="_blank" rel="noopener">LinkedIn</a>
+    <a href="../contact.html">Contact</a>
+  </div>
+  <p>© 2026 Alwin Varghese</p>
+</footer>
+
+<script>
+const nav = document.getElementById('navbar');
+window.addEventListener('scroll', () => nav.classList.toggle('scrolled', window.scrollY > 10));
+document.getElementById('navToggle').addEventListener('click', () => document.getElementById('navLinks').classList.toggle('open'));
+</script>
+</body>
+</html>
